@@ -1,0 +1,14 @@
+Q1>Write a blog on Difference between HTTP1.1 vs HTTP2
+Ans> Http1.1 brought the ability to transfer content from one pc to another along with the ability to store content
+in the form of cache and cookies which allowed to take data from the cache instead of server and quickly load sites
+when its reloaded.
+
+Http2 brought features like binary endcoding which made it more secure, fast and efficient.
+
+Q2>Write a blog about objects and its internal representation in Javascript
+Ans>The objects in a website will be made of different data types and will be assigned a location on where it has to be placed,
+this is called the DOM or DOM tree. This will be understood by the Javascript engine of the browser and will be rendered
+on the screen accordingly also working with the Html parser.
+
+Q3>codekata practice
+Q4>Read about IP address, port, HTTP methods, MAC address
