@@ -1,0 +1,24 @@
+Q1>const json1 = '{"name":"Mani","age":32}';
+
+const json2 = '{"name":"Mani","age":31}';
+
+
+function compareJSON(json1, json2) {
+  //Step 1 : Parse JSON string to object
+  const obj1 = JSON.parse(json1);
+  const obj2 = JSON.parse(json2);
+  
+  //Step 2 : compare the no of properties
+  if(Object.keys(obj1).length != Object.keys(obj2).length) {
+    return false;
+  }
+  
+  //Step 3 : Compare the actual properties
+  for(let key in obj1) {
+    if(!obj2.hasOwnProperty(key) || obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+  
+  return true; 
+}
