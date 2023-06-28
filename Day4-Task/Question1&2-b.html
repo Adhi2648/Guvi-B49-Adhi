@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+        //anonymous function
+      var a=function(string) {
+      var sentence = string.toLowerCase().split(" ");
+      for(var i = 0; i< sentence.length; i++){
+         sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+      }
+   document.write(sentence.join(" "));
+   return sentence;
+   }
+   a("tutorix is one of best e-platforms");
+
+       //arrow function
+         var b=(string) => {
+        var sentence = string.toLowerCase().split(" ");
+      for(var i = 0; i< sentence.length; i++){
+         sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+      }
+   document.write(sentence.join(" "));
+   return sentence;
+   }
+   b("tutorix is one of best e-platforms");
+
+    </script>
+  </body>
+</html>
