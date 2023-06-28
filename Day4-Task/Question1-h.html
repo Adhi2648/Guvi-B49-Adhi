@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //anonymous function
+        var a = function (a, n, k) {
+
+            k = k % n;
+
+            for (let i = 0; i < n; i++) {
+                if (i < k) {
+                    console.log(a[n + i - k] + " ");
+                }
+                else {
+                    console.log((a[i - k]) + " ");
+                }
+            }
+            console.log("<br>");
+        }
+
+        let Array = [1, 2, 3, 4, 5];
+        let N = Array.length;
+        let K = 2;
+
+        a(Array, N, K);
+    </script>
+</body>
+
+</html>

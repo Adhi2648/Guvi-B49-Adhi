@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //anonymous function
+
+        let arr = ["apple", "mango", "apple", "orange", "mango", "mango"];
+
+        var a = function (arr) {
+            let unique = [];
+            arr.forEach(element => {
+                if (!unique.includes(element)) {
+                    unique.push(element);
+                }
+            });
+            return unique;
+        }
+        console.log(a(arr));
+    </script>
+</body>
+
+</html>
