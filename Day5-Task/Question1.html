@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const jsonObject = {
+            "key1": "value1",
+            "key2": "value2",
+            "key3": "value3"
+        };
+
+        //for loop
+        for (const key in jsonObject) {
+            if (jsonObject.hasOwnProperty(key)) {
+                const value = jsonObject[key];
+                console.log(`Key: ${key}, Value: ${value}`);
+            }
+        }
+
+        //for..in
+        for (const key in jsonObject) {
+            if (jsonObject.hasOwnProperty(key)) {
+                const value = jsonObject[key];
+                console.log(`Key: ${key}, Value: ${value}`);
+            }
+        }
+
+        //for..of
+        for (const [key, value] of Object.entries(jsonObject)) {
+            console.log(`Key: ${key}, Value: ${value}`);
+        }
+
+        //forEach
+        const entries = Object.entries(jsonObject);
+
+        entries.forEach(([key, value]) => {
+            console.log(`Key: ${key}, Value: ${value}`);
+        });
+    </script>
+</body>
+
+</html>
