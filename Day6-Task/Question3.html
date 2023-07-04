@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name) {
+                this.fullName = name;
+            }
+
+            getName() {
+                return this.fullName;
+            }
+        }
+        class Employee extends Person {
+            constructor(name, id, designation, number) {
+                super(name);
+                this.id = id;
+                this.designation = designation;
+                this.number = number;
+            }
+            getId() {
+                return this.id;
+            }
+        }
+        let obj = new Employee("Adhi", "007", "FullStackDev", "8220863944");
+        console.log(obj.getName(), obj.getId());
+
+    </script>
+</body>
+
+</html>

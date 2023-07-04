@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Uber {
+            constructor(distance, duration) {
+                this.distance = distance;
+                this.duration = duration;
+            }
+
+            get distance() {
+                return this._distance;
+            }
+
+            set distance(distance) {
+                this._distance = distance;
+            }
+
+            get duration() {
+                return this._duration;
+            }
+
+            set duration(duration) {
+                this._duration = duration;
+            }
+
+            calculatePrice() {
+                const pricePerKm = 0.1;
+                const pricePerMinute = 0.05;
+                const totalDistancePrice = this.distance * pricePerKm;
+                const totalDurationPrice = this.duration * pricePerMinute;
+                return totalDistancePrice + totalDurationPrice;
+            }
+        }
+
+        class UberPremium extends Uber {
+            calculatePrice() {
+                const basePrice = 5;
+                const premiumPricePerKm = 0.2;
+                const premiumPricePerMinute = 0.1;
+                const totalBasePrice = basePrice + super.calculatePrice();
+                const totalPremiumDistancePrice = this.distance * premiumPricePerKm;
+                const totalPremiumDurationPrice = this.duration * premiumPricePerMinute;
+                return totalBasePrice + totalPremiumDistancePrice + totalPremiumDurationPrice;
+            }
+        }
+
+        const uberRide = new Uber(10, 30);
+        console.log(uberRide.calculatePrice());
+
+        const uberPremiumRide = new UberPremium(10, 30);
+        console.log(uberPremiumRide.calculatePrice());
+
+    </script>
+</body>
+
+</html>
