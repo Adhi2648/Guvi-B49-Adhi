@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gallery</h1>
+    <div class="gallery">
+        <div class="grid-item">
+            <img src="download.jpeg" alt="Image 1">
+        </div>
+        <div class="grid-item">
+            <img src="download (1).jpeg" alt="Image 2">
+        </div>
+        <div class="grid-item">
+            <img src="download (2).jpeg" alt="Image 3">
+        </div>
+        <div class="grid-item">
+            <img src="download (3).jpeg" alt="Image 3">
+        </div>
+        <div class="grid-item">
+            <img src="images.jpeg" alt="Image 3">
+        </div>
+    </div>
+</body>
+
+</html>
