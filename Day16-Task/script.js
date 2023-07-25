@@ -1,20 +1,17 @@
 const countdown = (num, callback) => {
+  const countdownDiv = document.getElementById("countdown");
+
   if (num > 0) {
-    console.log(num);
+    countdownDiv.innerHTML = num;
     setTimeout(() => {
       countdown(num - 1, callback);
     }, 1000);
   } else {
+    countdownDiv.innerHTML = "Happy Independence Day";
     callback();
   }
 };
 
-// countdown(1, () => console.log("Happy Independence Day"));
-
-countdown(
-  10,
-  () => {
-    console.log("Happy Independence Day");
-  },
-  1000
-);
+countdown(10, () => {
+  console.log("Countdown complete!");
+});
