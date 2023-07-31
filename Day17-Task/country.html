@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries weather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="card-columns">
+        <div class="card bg-light">
+            <div class="card-body">
+                <img id="flag1" src="" alt="Flag" style="width: 100%;">
+                <p><strong>Capital:</strong> <span id="capital1"></span></p>
+                <p><strong>Region:</strong> <span id="region1"></span></p>
+                <p><strong>Country Code:</strong> <span id="countryCode1"></span></p>
+                <button onclick="getWeather(1)">Get Weather</button>
+                <p id="weather1"></p>
+            </div>
+        </div>
+
+        <div class="card bg-light">
+            <div class="card-body">
+                <img id="flag2" src="" alt="Flag" style="width: 100%;">
+                <p><strong>Capital:</strong> <span id="capital2"></span></p>
+                <p><strong>Region:</strong> <span id="region2"></span></p>
+                <p><strong>Country Code:</strong> <span id="countryCode2"></span></p>
+                <button onclick="getWeather(2)">Get Weather</button>
+                <p id="weather2"></p>
+            </div>
+        </div>
+
+        <div class="card bg-light">
+            <div class="card-body">
+                <img id="flag3" src="" alt="Flag" style="width: 100%;">
+                <p><strong>Capital:</strong> <span id="capital3"></span></p>
+                <p><strong>Region:</strong> <span id="region3"></span></p>
+                <p><strong>Country Code:</strong> <span id="countryCode3"></span></p>
+                <button onclick="getWeather(3)">Get Weather</button>
+                <p id="weather3"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const endpoint = "https://restcountries.com/v3.1/all";
+
+        async function fetchData() {
+            try {
+                const response = await fetch(endpoint);
+                const countriesData = await response.json();
+
+                const randomIndexes = getRandomIndexes(countriesData.length, 3);
+
+                for (let i = 0; i < randomIndexes.length; i++) {
+                    const countryData = countriesData[randomIndexes[i]];
+                    const divId = `country${i + 1}`;
+
+                    document.getElementById(`flag${i + 1}`).src = countryData.flags.svg;
+                    document.getElementById(`capital${i + 1}`).textContent = countryData.capital;
+                    document.getElementById(`region${i + 1}`).textContent = countryData.region;
+                    document.getElementById(`countryCode${i + 1}`).textContent = countryData.cca2;
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        function getRandomIndexes(max, count) {
+            const indexes = [];
+            while (indexes.length < count) {
+                const randomIndex = Math.floor(Math.random() * max);
+                if (!indexes.includes(randomIndex)) {
+                    indexes.push(randomIndex);
+                }
+            }
+            return indexes;
+        }
+
+        async function getWeather(countryNumber) {
+            try {
+                const cap = document.getElementById(`capital${countryNumber}`).textContent;
+                console.log(cap);
+                const countryCode = document.getElementById(`countryCode${countryNumber}`).textContent;
+                const weatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${cap},${countryCode}&appid=b99466603247faefbaf838f35efeeb72`
+                const response = await fetch(weatherEndpoint);
+                const weatherData = await response.json();
+                console.log(weatherData);
+                const weatherDescription = weatherData.weather[0].description;
+                const temperature = weatherData.main.temp;
+                const weatherText = `Weather: ${weatherDescription}, Temperature: ${temperature}K`;
+
+                document.getElementById(`weather${countryNumber}`).textContent = weatherText;
+            } catch (error) {
+                console.error("Error fetching weather data:", error);
+            }
+        }
+
+        fetchData();
+
+    </script>
+</body>
+
+</html>
