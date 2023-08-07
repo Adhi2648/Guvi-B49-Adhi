@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Player Data</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+        .custom-card {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        /* Add margin and padding to list items */
+        .list-group-item {
+            margin: 5px;
+            padding: 10px;
+        }
+
+        /* Ensure columns don't exceed screen width */
+        .col-md-3 {
+            max-width: 25%;
+        }
+
+        /* Center columns */
+        .center-columns {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;">
+
+    <div class="container-fluid mt-5">
+        <div class="row center-columns">
+            <!-- BallDontLie API Column 1 -->
+            <div class="col-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">NBA Players</h5>
+                        <ul id="playersList1" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BallDontLie API Column 2 -->
+            <div class="col-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">NBA Players</h5>
+                        <ul id="playersList2" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BallDontLie API Column 3 -->
+            <div class="col-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">NBA Players</h5>
+                        <ul id="playersList3" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BallDontLie API Column 4 -->
+            <div class="col-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">NBA Players</h5>
+                        <ul id="playersList4" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and your JavaScript code -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function fetchNBAPlayers() {
+            try {
+                const playersLists = [
+                    document.getElementById("playersList1"),
+                    document.getElementById("playersList2"),
+                    document.getElementById("playersList3"),
+                    document.getElementById("playersList4")
+                ];
+
+                const apiUrl = `https://www.balldontlie.io/api/v1/players?page=1&per_page=25`;
+                const response = await fetch(apiUrl);
+                const players = await response.json();
+
+                // Fetch and display players
+                players.data.forEach((player, index) => {
+                    const listItem = document.createElement("li");
+                    listItem.className = "list-group-item";
+                    listItem.textContent = `${player.first_name} ${player.last_name} - Team: ${player.team.full_name}`;
+
+                    // Distribute players across columns
+                    playersLists[index % 4].appendChild(listItem);
+                });
+            } catch (error) {
+                console.error("Error fetching NBA players:", error);
+            }
+        }
+
+        // Call the fetchNBAPlayers function to display players
+        fetchNBAPlayers();
+    </script>
+</body>
+
+</html>

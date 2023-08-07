@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 APIs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Random Dog Image</h5>
+                    <img id="dogImage" class="img-fluid mb-3" src="" alt="Random Dog">
+                    <button id="getRandomDogButton" class="btn btn-primary">Get Random Dog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //Dogs images api call
+        const apiUrl2 = "https://dog.ceo/api/breeds/image/random";
+        const getRandomDogButton = document.getElementById("getRandomDogButton");
+        const dogImage = document.getElementById("dogImage");
+
+        async function fetchRandomDogImage() {
+            try {
+                const response = await fetch(apiUrl2);
+                const data = await response.json();
+
+                const imageUrl = data.message;
+                dogImage.src = imageUrl;
+                dogImage.alt = "Random Dog";
+            } catch (error) {
+                console.error("Error fetching dog image:", error);
+            }
+        }
+        getRandomDogButton.addEventListener("click", fetchRandomDogImage);
+
+        fetchRandomDogImage();
+    </script>
+</body>
+
+</html>
