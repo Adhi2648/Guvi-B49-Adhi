@@ -1,0 +1,5 @@
+.names:hover {
+  /* background-color: #f5f5f5; */
+  cursor: pointer;
+  text-transform: capitalize;
+}
