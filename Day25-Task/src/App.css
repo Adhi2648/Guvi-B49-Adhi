@@ -1,0 +1,27 @@
+.card {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-dropdown {
+  margin-left: 10px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
