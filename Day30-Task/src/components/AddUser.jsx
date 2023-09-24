@@ -17,13 +17,11 @@ const AddUser = ({ onAdd }) => {
     axios
       .post("https://jsonplaceholder.typicode.com/users", newUser)
       .then((response) => {
-        // Handle the new user in your UI (e.g., add to the list)
         onAdd(response.data);
-        // Clear the input fields
+
         setNewUser({
           name: "",
           email: "",
-          // Clear other user properties as well
         });
       })
       .catch((error) => {
