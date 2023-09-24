@@ -90,14 +90,27 @@ app.get("/mentor/:mentorId/students", async (req, res) => {
   }
 });
 
-app.get("/student/:studentId/previousMentors", async (req, res) => {
+app.get("/student/:studentId/previousMentor", async (req, res) => {
   try {
-    const student = await Student.findById(req.params.studentId).populate(
-      "pMentor"
-    );
-    res.send(student);
+    const student = await Student.findById(req.params.studentId);
+
+    if (!student) {
+      return res.status(404).send("Student not found");
+    }
+
+    const previousMentorIds = student.pMentor;
+
+    if (previousMentorIds.length === 0) {
+      return res.status(404).send("No previous mentor found for this student");
+    }
+
+    const previousMentors = await Mentor.find({
+      _id: { $in: previousMentorIds },
+    });
+
+    res.send(previousMentors);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).send(error);
   }
 });
 
