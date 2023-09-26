@@ -9,7 +9,7 @@ if (!fs.existsSync(outputFolder)) {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/createFile", (req, res) => {
   const currentTime = new Date();
