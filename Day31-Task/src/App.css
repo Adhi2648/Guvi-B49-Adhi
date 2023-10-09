@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+.card {
+  background: rgb(254, 254, 254);
+}
+
+.heading {
+  background: rgb(116, 113, 113);
+}
+
+.text-light {
+  position: relative;
+  top: 31px;
+}
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
